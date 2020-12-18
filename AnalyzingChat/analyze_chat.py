@@ -80,7 +80,7 @@ def average(a):
     sum = 0
     for i in range(n):
         sum += a[i]
-    return sum/n;
+    return sum//n;
 
 def get_number_of_vowels():
     count = 0
