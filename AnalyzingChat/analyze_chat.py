@@ -82,6 +82,14 @@ def average(a):
         sum += a[i]
     return sum/n;
 
+def get_number_of_vowels():
+    count = 0
+    vowels = ['a','e','i','o','u']
+    for chat in content["messages"]:
+        for v in vowels:
+            count += chat["content"].count(v)
+    return count
+
 print(f"Average length: {average(message_lengths)} characters")
 print()
 print(f"Number of messages in all channels: {len(message_lengths)}")
@@ -102,11 +110,15 @@ print(f"which was said by {get_author_of_message(longest_message)}")
 print()
 print(":___ Curse Word Statistics ___:")
 get_author_of_message_with("owo")
-#  get_author_of_message_with("shit")
-#  get_author_of_message_with("fuck")
-#  get_author_of_message_with("poop")
-#  get_author_of_message_with("heck")
-#  get_author_of_message_with("trump")
-#  get_author_of_message_with("beep")
-#  get_author_of_message_with("boop")
+get_author_of_message_with("shit")
+get_author_of_message_with("fuck")
+get_author_of_message_with("poop")
+get_author_of_message_with("heck")
+get_author_of_message_with("trump")
+get_author_of_message_with("beep")
+get_author_of_message_with("boop")
+
+print()
+print(f"Number of vowels: {get_number_of_vowels()}")
+
 
