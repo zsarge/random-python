@@ -55,7 +55,7 @@ def print_occurences(dic, s):
 def get_author_of_message(message_content):
     authors = []
     for chat in content["messages"]:
-        if chat["content"] == message_content:
+        if chat["content"].lower() == message_content.lower():
             authors.append(chat["author"]["name"])
     authors = remove_deadnames(authors)
     if len(authors) > 1:
@@ -63,7 +63,7 @@ def get_author_of_message(message_content):
         print_occurences(authors, message_content)
     return authors[0]
 
-def get_author_of_message_with(message_content):
+def get_people_who_said(message_content):
     authors = []
     for chat in content["messages"]:
         if message_content.lower() in chat["content"].lower():
@@ -80,7 +80,15 @@ def average(a):
     sum = 0
     for i in range(n):
         sum += a[i]
-    return sum/n;
+    return sum//n;
+
+def get_number_of_vowels():
+    count = 0
+    vowels = ['a','e','i','o','u']
+    for chat in content["messages"]:
+        for v in vowels:
+            count += chat["content"].count(v)
+    return count
 
 print(f"Average length: {average(message_lengths)} characters")
 print()
@@ -91,22 +99,17 @@ longest_message = get_message_with_length(max_len)
 print()
 print(f"longest message is {len(longest_message)} characters long ({longest_message[:10]}...)")
 print(f"which was said by {get_author_of_message(longest_message)}")
-
-#  quirky_bois = get_messages_with_length(69)
-#  for i in quirky_bois:
-    #  print(f"quirkiest messages = {i} \n\t^^ by: {get_author_of_message(i)}")
-
-#  print(f"owo -- {get_author_of_message('owo')}")
-#  print(f"owo -- {get_author_of_message_with('owo')}")
-
 print()
-print(":___ Curse Word Statistics ___:")
-get_author_of_message_with("owo")
-#  get_author_of_message_with("shit")
-#  get_author_of_message_with("fuck")
-#  get_author_of_message_with("poop")
-#  get_author_of_message_with("heck")
-#  get_author_of_message_with("trump")
-#  get_author_of_message_with("beep")
-#  get_author_of_message_with("boop")
+print(f"Number of vowels: {get_number_of_vowels()}")
+print()
+print("___ Curse Word Statistics ___")
+get_people_who_said("owo")
+get_people_who_said("shit")
+get_people_who_said("fuck")
+get_people_who_said("poop")
+get_people_who_said("heck")
+get_people_who_said("trump")
+get_people_who_said("beep")
+get_people_who_said("boop")
+
 
