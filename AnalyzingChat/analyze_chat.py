@@ -63,7 +63,7 @@ def get_author_of_message(message_content):
         print_occurences(authors, message_content)
     return authors[0]
 
-def get_author_of_message_with(message_content):
+def get_people_who_said(message_content):
     authors = []
     for chat in content["messages"]:
         if message_content.lower() in chat["content"].lower():
@@ -103,13 +103,13 @@ print()
 print(f"Number of vowels: {get_number_of_vowels()}")
 print()
 print("___ Curse Word Statistics ___")
-get_author_of_message_with("owo")
-get_author_of_message_with("shit")
-get_author_of_message_with("fuck")
-get_author_of_message_with("poop")
-get_author_of_message_with("heck")
-get_author_of_message_with("trump")
-get_author_of_message_with("beep")
-get_author_of_message_with("boop")
+get_people_who_said("owo")
+get_people_who_said("shit")
+get_people_who_said("fuck")
+get_people_who_said("poop")
+get_people_who_said("heck")
+get_people_who_said("trump")
+get_people_who_said("beep")
+get_people_who_said("boop")
 
 
