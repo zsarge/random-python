@@ -24,21 +24,27 @@ def get_messages_with_length(n):
 			messages.append(chat["content"])
 	return messages
 
+def print_occurences(dic, s):
+    print(f"{len(dic)} messages found with {s}")
+    criminals = {}
+    for i in dic:
+        try:
+            criminals[i] += 1
+        except:
+            criminals[i] = 1
+    print()
+    print(f"times \t- name")
+    print(f"---------------")
+    for i in criminals:
+        print(f"{criminals[i]} \t- {i}")
+
 def get_author_of_message(message_content):
     authors = []
     for chat in content["messages"]:
         if chat["content"] == message_content:
             authors.append(chat["author"]["name"])
     if len(authors) > 1:
-        print(f"{len(authors)} messages found with {message_content}")
-        criminals = {}
-        for i in authors:
-            try:
-                criminals[i] += 1
-            except:
-                criminals[i] = 1
-        print(criminals)
-
+        print_occurences(authors, message_content)
     return authors[0]
 
 def get_author_of_message_with(message_content):
@@ -47,15 +53,7 @@ def get_author_of_message_with(message_content):
         if message_content in chat["content"]:
             authors.append(chat["author"]["name"])
     if len(authors) > 1:
-        print(f"{len(authors)} messages found with {message_content}")
-        criminals = {}
-        for i in authors:
-            try:
-                criminals[i] += 1
-            except:
-                criminals[i] = 1
-        print(criminals)
-
+        print_occurences(authors, message_content)
     return authors[0]
 
 def average(a):
@@ -78,5 +76,5 @@ print(get_author_of_message(longest_message))
 #  for i in quirky_bois:
     #  print(f"quirkiest messages = {i} \n\t^^ by: {get_author_of_message(i)}")
 
-#  print(f"owo -- {get_author_of_message('owo')}")
+print(f"owo -- {get_author_of_message('owo')}")
 print(f"owo -- {get_author_of_message_with('owo')}")
