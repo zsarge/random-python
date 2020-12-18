@@ -55,7 +55,7 @@ def print_occurences(dic, s):
 def get_author_of_message(message_content):
     authors = []
     for chat in content["messages"]:
-        if chat["content"] == message_content:
+        if chat["content"].lower() == message_content.lower():
             authors.append(chat["author"]["name"])
     authors = remove_deadnames(authors)
     if len(authors) > 1:
@@ -99,16 +99,10 @@ longest_message = get_message_with_length(max_len)
 print()
 print(f"longest message is {len(longest_message)} characters long ({longest_message[:10]}...)")
 print(f"which was said by {get_author_of_message(longest_message)}")
-
-#  quirky_bois = get_messages_with_length(69)
-#  for i in quirky_bois:
-    #  print(f"quirkiest messages = {i} \n\t^^ by: {get_author_of_message(i)}")
-
-#  print(f"owo -- {get_author_of_message('owo')}")
-#  print(f"owo -- {get_author_of_message_with('owo')}")
-
 print()
-print(":___ Curse Word Statistics ___:")
+print(f"Number of vowels: {get_number_of_vowels()}")
+print()
+print("___ Curse Word Statistics ___")
 get_author_of_message_with("owo")
 get_author_of_message_with("shit")
 get_author_of_message_with("fuck")
@@ -117,8 +111,5 @@ get_author_of_message_with("heck")
 get_author_of_message_with("trump")
 get_author_of_message_with("beep")
 get_author_of_message_with("boop")
-
-print()
-print(f"Number of vowels: {get_number_of_vowels()}")
 
 
