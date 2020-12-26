@@ -14,15 +14,13 @@ for chat in content["messages"]:
 
 # replace the deadnames of my trans friends
 def remove_deadnames(names):
-    real_names = []
-    for deadname in deadnames:
-        for username in names:
-            if deadname == username:
-                real_names.append(deadnames[deadname])
-            else:
-                real_names.append(username)
-
-    return real_names
+    def remove_deadname(name):
+        if name in deadnames.keys():
+            return deadnames[name]
+        else:
+            return name
+    names = list(map(remove_deadname, names))
+    return names
 
 def get_message_with_length(n):
 	for chat in content["messages"]:
